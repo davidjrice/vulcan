@@ -57,6 +57,13 @@ Dir.mktmpdir do |dir|
 
       ENV["CXXFLAGS"] ||= ""
       ENV["CXXFLAGS"] += " -I%s/deps/include" % dir
+
+      # Custom ENV variables required by cairo / pixman
+      ENV["pixman_CFLAGS"] ||= ""
+      ENV["pixman_CFLAGS"] += " -I%s/deps/include/pixman-1" % dir
+
+      ENV["pixman_LIBS"] ||= ""
+      ENV["pixman_LIBS"] += " -I%s/deps/lib" % dir
     end
 
     FileUtils.mkdir_p "input"
